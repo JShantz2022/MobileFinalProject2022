@@ -9,7 +9,7 @@ import {EditDriverComponent} from "./edit-driver/edit-driver.component";
 import {EditDeliveryComponent} from "./edit-delivery/edit-delivery.component";
 import {HomepageComponent} from "./homepage/homepage.component";
 import {ViewCustomersComponent} from "./view-customers/view-customers.component";
-import {ViewDeliverysComponent} from "./view-deliverys/view-deliverys.component";
+import {ViewDeliveriesComponent} from "./view-deliveries/view-deliveries.component";
 import {ViewDriversComponent} from "./view-drivers/view-drivers.component";
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: "edit-delivery/:id", component: EditDeliveryComponent},
   {path: "view-customers", component: ViewCustomersComponent},
   {path: "view-drivers", component: ViewDriversComponent},
-  {path: "view-deliveries", component: ViewDeliverysComponent}
+  {path: "view-deliveries", component: ViewDeliveriesComponent}
 
 ]
 

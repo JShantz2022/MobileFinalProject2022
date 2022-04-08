@@ -1,1 +1,31 @@
-<p>nav works!</p>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">{{title}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navBarAddDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Add</a>
+                    <ul class="dropdown-menu" aria-labelledby="navBarAddDropdown">
+                        <li><a class="dropdown-item" routerLink="add-customer">Add Customer</a></li>
+                        <li><a class="dropdown-item" routerLink="add-driver">Add Driver</a></li>
+                        <li><a class="dropdown-item" routerLink="add-delivery">Add Delivery</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navBarViewDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">View</a>
+                    <ul class="dropdown-menu" aria-labelledby="navBarViewDropdown">
+                        <li><a class="dropdown-item" routerLink="view-customers">View Customers</a></li>
+                        <li><a class="dropdown-item" routerLink="view-drivers">View Drivers</a></li>
+                        <li><a class="dropdown-item" routerLink="view-deliveries">View Deliveries</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

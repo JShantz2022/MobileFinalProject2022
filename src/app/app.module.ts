@@ -12,7 +12,7 @@ import { EditDriverComponent } from './edit-driver/edit-driver.component';
 import { ViewDriversComponent } from './view-drivers/view-drivers.component';
 import { AddDeliveryComponent } from './add-delivery/add-delivery.component';
 import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
-import { ViewDeliverysComponent } from './view-deliverys/view-deliverys.component';
+import { ViewDeliveriesComponent } from './view-deliveries/view-deliveries.component';
 import { AboutComponent } from './about/about.component';
 import {FormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
     ViewDriversComponent,
     AddDeliveryComponent,
     EditDeliveryComponent,
-    ViewDeliverysComponent,
+    ViewDeliveriesComponent,
     AboutComponent
   ],
   imports: [
