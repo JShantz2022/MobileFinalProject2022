@@ -14,6 +14,8 @@ import { AddDeliveryComponent } from './add-delivery/add-delivery.component';
 import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
 import { ViewDeliverysComponent } from './view-deliverys/view-deliverys.component';
 import { AboutComponent } from './about/about.component';
+import {FormsModule} from "@angular/forms";
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AboutComponent } from './about/about.component';
     AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
