@@ -1,1 +1,57 @@
-<p>add-delivery works!</p>
+<div class="m-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Add a delivery</h2>
+        </div>
+        <div class="card-body">
+            <form #myForm="ngForm">
+                <div class="mb-3">
+                    <label for="cmbCustomer" class="form-label">Customer</label>
+                    <select id="cmbCustomer" name="cmbCustomer" class="form-control"
+                        [(ngModel)]="delivery.cId"
+                        #customer="ngModel"
+                        [value]="null"
+                        required>
+                        <option *ngFor="let customer of customers" value="{{customer[0]}}">{{customer[1]}}</option>
+                    </select>
+                    <div *ngIf="customer.invalid && (customer.dirty || customer.touched)" class="text-danger">
+                        Customer is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="cmbDriver" class="form-label">Driver</label>
+                    <select id="cmbDriver" name="cmbDriver" class="form-control"
+                        [(ngModel)]="delivery.driverId"
+                        #driver="ngModel"
+                        [value]="null"
+                        required>
+                        <option *ngFor="let driver of drivers" value="{{drivers[0]}}">{{drivers[1]}}</option>
+                    </select>
+                    <div *ngIf="driver.invalid && (driver.dirty || driver.touched)" class="text-danger">
+                        Driver is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="cmbFood" class="form-label">Province</label>
+                    <select id="cmbFood" name="cmbFood" class="form-control" multiple
+                        [(ngModel)]="selectedFoods"
+                        #food="ngModel"
+                        required>
+                        <option *ngFor="let food of foods" value="{{food}}">{{food}}</option>
+                    </select>
+                    <div *ngIf="food.invalid && (food.dirty || food.touched)" class="text-danger">
+                        At least 1 type of food is required
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="btn btn-primary" id="btnSave" name="btnSave"
+                        [disabled]="myForm.invalid"
+                        (click)="btnSave_click()">Save</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            {{myForm | json}}
+        </div>
+    </div>
+</div>
