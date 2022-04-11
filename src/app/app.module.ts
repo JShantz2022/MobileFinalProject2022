@@ -16,29 +16,33 @@ import { ViewDeliveriesComponent } from './view-deliveries/view-deliveries.compo
 import { AboutComponent } from './about/about.component';
 import {FormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-    NavComponent,
-    AddCustomerComponent,
-    EditCustomerComponent,
-    ViewCustomersComponent,
-    AddDriverComponent,
-    EditDriverComponent,
-    ViewDriversComponent,
-    AddDeliveryComponent,
-    EditDeliveryComponent,
-    ViewDeliveriesComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomepageComponent,
+        NavComponent,
+        AddCustomerComponent,
+        EditCustomerComponent,
+        ViewCustomersComponent,
+        AddDriverComponent,
+        EditDriverComponent,
+        ViewDriversComponent,
+        AddDeliveryComponent,
+        EditDeliveryComponent,
+        ViewDeliveriesComponent,
+        AboutComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSelectModule
+     ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
