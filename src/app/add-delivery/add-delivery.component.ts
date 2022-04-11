@@ -8,7 +8,7 @@ import {Delivery} from "../models/delivery.model";
 })
 export class AddDeliveryComponent implements OnInit {
     foods = ["Apples", "Bananas", "Potatoes", "Carrots", "Steak", "Ground Beef"];
-    selectedFoods: string[];
+    selectedFoods = [];
     customers = [[1,"Shirley"], [2,"Adam"], [3,"Micheal"]];
     drivers = [[1,"Harry"], [2,"Undine"], [3,"Porsha"]];
     delivery: Delivery = new Delivery();

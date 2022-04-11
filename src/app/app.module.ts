@@ -18,27 +18,27 @@ import {FormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-    NavComponent,
-    AddCustomerComponent,
-    EditCustomerComponent,
-    ViewCustomersComponent,
-    AddDriverComponent,
-    EditDriverComponent,
-    ViewDriversComponent,
-    AddDeliveryComponent,
-    EditDeliveryComponent,
-    ViewDeliveriesComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomepageComponent,
+        NavComponent,
+        AddCustomerComponent,
+        EditCustomerComponent,
+        ViewCustomersComponent,
+        AddDriverComponent,
+        EditDriverComponent,
+        ViewDriversComponent,
+        AddDeliveryComponent,
+        EditDeliveryComponent,
+        ViewDeliveriesComponent,
+        AboutComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
