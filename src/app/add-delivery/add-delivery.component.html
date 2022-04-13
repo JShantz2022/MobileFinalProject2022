@@ -7,12 +7,11 @@
             <form #myForm="ngForm">
                 <div class="mb-3">
                     <label for="cmbCustomer" class="form-label">Customer</label>
-                    <select id="cmbCustomer" name="cmbCustomer" class="form-control"
+                    <select id="cmbCustomer" name="cmbCustomer" class="form-select"
                         [(ngModel)]="delivery.cId"
                         #customer="ngModel"
-                        [value]="null"
                         required>
-                        <option *ngFor="let customer of customers" value="{{customer[0]}}">{{customer[1]}}</option>
+                        <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.firstName}}</option>
                     </select>
                     <div *ngIf="customer.invalid && (customer.dirty || customer.touched)" class="text-danger">
                         Customer is required
@@ -20,20 +19,19 @@
                 </div>
                 <div class="mb-3">
                     <label for="cmbDriver" class="form-label">Driver</label>
-                    <select id="cmbDriver" name="cmbDriver" class="form-control"
+                    <select id="cmbDriver" name="cmbDriver" class="form-select"
                         [(ngModel)]="delivery.driverId"
                         #driver="ngModel"
-                        [value]="null"
                         required>
-                        <option *ngFor="let driver of drivers" value="{{drivers[0]}}">{{drivers[1]}}</option>
+                        <option *ngFor="let driver of drivers" value="{{driver.id}}">{{driver.firstName}}</option>
                     </select>
                     <div *ngIf="driver.invalid && (driver.dirty || driver.touched)" class="text-danger">
                         Driver is required
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="cmbFood" class="form-label">Province</label>
-                    <select id="cmbFood" name="cmbFood" class="form-control" multiple
+                    <label for="cmbFood" class="form-label">Foods</label>
+                    <select id="cmbFood" name="cmbFood[]" class="form-select" multiple="multiple"
                         [(ngModel)]="selectedFoods"
                         #food="ngModel"
                         required>
@@ -49,9 +47,6 @@
                         (click)="btnSave_click()">Save</button>
                 </div>
             </form>
-        </div>
-        <div class="card-footer">
-            {{myForm | json}}
         </div>
     </div>
 </div>

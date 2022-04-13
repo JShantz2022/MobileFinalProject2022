@@ -43,10 +43,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="cmbProvince" class="form-label">Province</label>
-                    <select id="cmbProvince" name="cmbProvince" class="form-control"
+                    <select id="cmbProvince" name="cmbProvince" class="form-select"
                         [(ngModel)]="driver.provinceId"
                         #province="ngModel"
-                        [value]="null"
                         required>
                         <option *ngFor="let province of provinces" value="{{province[0]}}">{{province[1]}}</option>
                     </select>

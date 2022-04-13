@@ -8,8 +8,9 @@ export class Driver{
     email : string = "";
     phone : string = "";
 
-    constructor(firstName?: string, lastName?: string, address?: string, provinceId?: number, postalCode?: string, email?: string,
+    constructor(driverId?: number, firstName?: string, lastName?: string, address?: string, provinceId?: number, postalCode?: string, email?: string,
                 phone?: string) {
+        this.id = driverId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
