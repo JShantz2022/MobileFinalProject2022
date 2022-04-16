@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Food Bank on the Go</name>
+    <description>Prototype mobile app for food banks to have food delivered to customers</description>
+    <author email="Jshantz8979@conestogac.on.ca" href="https://conestogac.on.ca">
+        Josslyne Shantz 8708979
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <icon src="icon.png" />
+</widget>
