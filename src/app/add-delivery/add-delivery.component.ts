@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Delivery} from "../models/delivery.model";
-import {Customer} from "../models/customer.model";
-import {Driver} from "../models/driver.model";
+import {DatabaseService} from "../services/database.service";
+import {DriverDatabaseService} from "../services/driver-database.service";
+import {DeliveryDatabaseService} from "../services/delivery-database.service";
+import {CustomerDatabaseService} from "../services/customer-database.service";
 
 @Component({
     selector: 'app-add-delivery',
@@ -10,17 +12,36 @@ import {Driver} from "../models/driver.model";
 })
 export class AddDeliveryComponent implements OnInit {
     delivery: Delivery = new Delivery();
-    foods = ["Apples", "Bananas", "Potatoes", "Carrots", "Steak", "Ground Beef"];
+    foods = [];
     selectedFoods = [];
-    customers = [new Customer (1,"Shirley"), new Customer (2,"Adam"), new Customer (3,"Micheal")];
-    drivers = [new Driver (1,"Harry"), new Driver (2,"Undine"), new Driver (3,"Porsha")];
-    constructor() { }
+    customers = [];
+    drivers = [];
+    constructor(private database: DatabaseService,private deliveryDatabase: DeliveryDatabaseService,
+                private driverDatabase: DriverDatabaseService, private customerDatabase: CustomerDatabaseService) { }
 
     ngOnInit(): void {
+        this.driverDatabase.selectAll().then((data)=>{
+            this.drivers = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
+        this.customerDatabase.selectAll().then((data)=>{
+            this.customers = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
+        this.database.selectAllFood().then((data)=>{
+            this.foods = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
     }
 
     btnSave_click(){
         this.delivery.setFoods(this.selectedFoods);
-        this.delivery.print();
+        this.deliveryDatabase.insert(this.delivery, ()=>{
+            console.log("Record added successfully");
+            alert("Record added successfully");
+        })
     }
 }

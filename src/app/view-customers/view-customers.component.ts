@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Customer} from "../models/customer.model";
 import {Router} from "@angular/router";
+import {CustomerDatabaseService} from "../services/customer-database.service";
 
 @Component({
     selector: 'app-view-customers',
@@ -8,10 +9,15 @@ import {Router} from "@angular/router";
     styleUrls: ['./view-customers.component.css']
 })
 export class ViewCustomersComponent implements OnInit {
-    customers : Customer[] = [new Customer(1,"Shirley", "Temple"), new Customer(2,"Adam", "Levine")];
-    constructor(private router: Router) { }
+    customers : Customer[] = [];
+    constructor(private router: Router, private customerDatabase: CustomerDatabaseService) { }
 
     ngOnInit(): void {
+        this.customerDatabase.selectAll().then((data)=>{
+            this.customers = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
     }
 
     btnModify_click(customer: Customer){

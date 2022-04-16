@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Delivery} from "../models/delivery.model";
-import {Customer} from "../models/customer.model";
-import {Driver} from "../models/driver.model";
 import {ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
+import {DatabaseService} from "../services/database.service";
+import {DriverDatabaseService} from "../services/driver-database.service";
+import {DeliveryDatabaseService} from "../services/delivery-database.service";
+import {CustomerDatabaseService} from "../services/customer-database.service";
 
 @Component({
     selector: 'app-edit-delivery',
@@ -10,26 +13,64 @@ import {ActivatedRoute} from "@angular/router";
     styleUrls: ['./edit-delivery.component.css']
 })
 export class EditDeliveryComponent implements OnInit {
-    delivery: Delivery;
-    foods = ["Apples", "Bananas", "Potatoes", "Carrots", "Steak", "Ground Beef"];
+    delivery: Delivery = new Delivery();
+    foods = [];
     selectedFoods = [];
-    customers = [new Customer (1,"Shirley"), new Customer (2,"Adam"), new Customer (3,"Micheal")];
-    drivers = [new Driver (1,"Harry"), new Driver (2,"Undine"), new Driver (3,"Porsha")];
+    customers = [];
+    drivers = [];
 
-    constructor(private activatedRoute: ActivatedRoute) { }
+    constructor(private activatedRoute: ActivatedRoute, private database: DatabaseService, private router: Router,
+                private deliveryDatabase: DeliveryDatabaseService, private driverDatabase: DriverDatabaseService,
+                private customerDatabase: CustomerDatabaseService) { }
 
     ngOnInit(): void {
-      let id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-      console.log(`id is ${id}`);
-      this.delivery= new Delivery(id, 1,2, "Apples,Bananas");
-      this.selectedFoods = this.delivery.getFoods();
+        this.getData();
+        setTimeout(() => this.getSelectedFoods(), 300);
+    }
+
+    private getSelectedFoods(){
+        this.selectedFoods = this.delivery.getFoods();
+    }
+
+    private getData(){
+        let id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+        console.log(`id is ${id}`);
+        this.deliveryDatabase.select(id).then((data)=>{
+            console.info(data);
+            this.delivery = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
+        this.driverDatabase.selectAll().then((data)=>{
+            this.drivers = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
+        this.customerDatabase.selectAll().then((data)=>{
+            this.customers = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
+        this.database.selectAllFood().then((data)=>{
+            this.foods = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
     }
 
     btnSave_click(){
-        this.delivery.print();
+        this.deliveryDatabase.update(this.delivery, ()=>{
+            console.log("Record updated successfully");
+            alert("Record updated successfully");
+        })
     }
 
     btnDelete_click(){
-        alert("Delivery deleted");
+        this.deliveryDatabase.delete(this.delivery, ()=>{
+            console.log("Delivery deleted successfully");
+            alert("Delivery deleted");
+        });
+
+        this.router.navigate(["view-deliveries"]);
     }
 }

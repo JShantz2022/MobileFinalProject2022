@@ -19,15 +19,4 @@ export class Driver{
         this.email = email;
         this.phone = phone;
     }
-
-    print(){
-        console.log(`\t\tFirst Name: ${this.firstName}
-        Last Name: ${this.lastName}
-        Address: ${this.address}
-        ProvinceId: ${this.provinceId}
-        Postal Code: ${this.postalCode}
-        Email: ${this.email}
-        Phone Number: ${this.phone}`)
-    }
-
 }

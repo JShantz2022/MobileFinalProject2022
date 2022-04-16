@@ -15,13 +15,7 @@ export class Delivery{
         this.foods = foods.toString();
     }
 
-    getFoods(){
+    public getFoods(): String[]{
         return this.foods.split(",");
-    }
-
-    print(){
-        console.log(`\t\tCustomer ID: ${this.cId}
-        Driver ID: ${this.driverId}
-        Foods: ${this.foods}`);
     }
 }

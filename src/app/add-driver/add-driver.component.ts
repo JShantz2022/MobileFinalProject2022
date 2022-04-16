@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Driver} from "../models/driver.model";
+import {DatabaseService} from "../services/database.service";
+import {DriverDatabaseService} from "../services/driver-database.service";
 
 @Component({
     selector: 'app-add-driver',
@@ -8,13 +10,21 @@ import {Driver} from "../models/driver.model";
 })
 export class AddDriverComponent implements OnInit {
     driver: Driver = new Driver();
-    provinces = [[1,"Ontario"], [2,"Alberta"], [3,"Quebec"], [4,"Yukon"], [5,"British Columbia"]];
-    constructor() { }
+    provinces = [];
+    constructor(private database: DatabaseService, private driverDatabase: DriverDatabaseService) { }
 
     ngOnInit(): void {
+        this.database.selectAllProvinces().then((data)=>{
+            this.provinces = data;
+        }).catch((error)=>{
+            console.error(error);
+        });
     }
 
     btnSave_click(){
-        this.driver.print();
+        this.driverDatabase.insert(this.driver, ()=>{
+            console.log("Record added successfully");
+            alert("Record added successfully");
+        })
     }
 }
